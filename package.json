@@ -7,7 +7,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --mode development",
-    "build": "webpack -d"
+    "build": "webpack -d",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -16,6 +18,7 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.10",
     "file-loader": "^1.1.9",
+    "gh-pages": "^1.1.0",
     "image-webpack-loader": "^4.1.0",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
@@ -29,5 +32,6 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2"
-  }
+  },
+  "homepage": "https://insomnia1337.github.io/MovieFinder"
 }

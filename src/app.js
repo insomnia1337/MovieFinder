@@ -1,11 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 import './app.scss';
+import AppMain from './Components/app-main/app-main';
 
-class App extends React.Component {
-    render() {
-        return <p>GOGO!</p>
-    }
-}
-
-render(<App/>, document.getElementById('root'));
+render(<AppMain />, document.getElementById('root'));
