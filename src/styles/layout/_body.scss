@@ -1,13 +1,22 @@
-@import './../variables/_variables.scss'
+@import './../variables/_variables.scss';
+
 html {
     height: 100%;
 }
 
 body {
-    background-color: $darkGrey;
-        p{
-            font-size: 26px;
-            text-align: center;
-        }
+    background-image: url('https://image.tmdb.org/t/p/original/xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg');
+    background-size: cover; 
+    margin: 0;
+    font-size: 1rem;
+    color:white;
     
+   
+}
+
+.overlay{
+    background-image:linear-gradient(rgba(0,0,0,.85) 15%,rgba(0,0,0,.2) 40%,#000 90%);
+    height: 100vh;
+    
+
 }
