@@ -1,7 +1,18 @@
+@import './../variables/_variables.scss';
+
 footer {
     text-align: center;
     margin-top: 40px;
+    color: $darkGrey;
+    font-size: 0.9em;
+    text-shadow: 1px 1px 1px black;
+    &:hover{
+        color: $midGrey;
+    }
+    
+    
 }
+
 
 
 .heart {
@@ -46,3 +57,5 @@ footer {
       from {-webkit-transform: rotate(-135deg) scale(1);transform: rotate(-135deg) scale(1);}
       to   {-webkit-transform: rotate(-135deg) scale(1.2);transform: rotate(-135deg) scale(1.2);}
   }
+  
+  
