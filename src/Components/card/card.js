@@ -12,7 +12,7 @@ class Card extends React.Component {
 
                     </div>
                     <div className="data-container col-12 col-md-8 col-lg-8">
-                        <h1>Tile</h1>
+                        <h1>Title</h1>
                         <span className="title_element">The movie about...</span>
                         <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
                             ipsum Lorem ipsum</p>
