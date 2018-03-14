@@ -1,0 +1,13 @@
+@import './../variables/_variables.scss'
+html {
+    height: 100%;
+}
+
+body {
+    background-color: $darkGrey;
+        p{
+            font-size: 26px;
+            text-align: center;
+        }
+    
+}

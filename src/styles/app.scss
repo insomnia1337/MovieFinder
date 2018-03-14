@@ -1,8 +1,14 @@
-body {
-    background-color: rgb(192, 192, 231);
-        p{
-            font-size: 26px;
-            text-align: center;
-        }
-    
-}
+/*Variables*/
+@import './variables/_variables.scss';
+
+//bootstrap
+
+@import './bootstrap.css';
+
+/*Layout*/
+@import './layout/_body.scss';
+@import './layout/_card.scss';
+@import './layout/_footer.scss';
+@import './layout/_logo.scss';
+@import './layout/_search.scss';
+
