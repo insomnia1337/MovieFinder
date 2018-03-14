@@ -8,6 +8,7 @@ class AppMain extends React.Component {
             <div className="overlay">
                 <Search/>
                 <Card/>
+                <footer>Made with <span className="heart"></span> &copy; 2018</footer>
             </div>
 
         )
