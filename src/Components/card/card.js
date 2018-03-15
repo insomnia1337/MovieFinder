@@ -5,7 +5,14 @@ class Card extends React.Component {
    
     
     render() {
-        
+        const data = this.props.data
+        const dataRelease = data.dataRelease;
+        const title = data.original_title;
+        const vote = data.vote
+        const budget = data.cash
+        const time = data.time
+        const tagline = data.tagline
+       
 
         
         return (
@@ -18,26 +25,25 @@ class Card extends React.Component {
 
                     </div>
                     <div className="data-container col-12 col-md-8 col-lg-8">
-                        <h1>Title</h1>
+                        <h1>{title}</h1>
                         <span className="title_element">The movie about...</span>
-                        <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
-                            ipsum Lorem ipsum</p>
+                        <p>{tagline}</p>
                         <div className="additional-info">
                             <div className="row">
                                 <div className="col-md-6">Original release:
-                                    <span className="info_element">2014-11-05</span>
+                                    <span className="info_element">{dataRelease}</span>
                                 </div>
 
                                 <div className="col-md-6">Running Time:
-                                    <span className="info_element">169 mins</span>
+                                    <span className="info_element">{time} mins</span>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-md-6">Box Office:
-                                    <span className="info_element">$500,000,000</span>
+                                    <span className="info_element">${budget}</span>
                                 </div>
                                 <div className="col-md-6">Vote Average:
-                                    <span className="info_element">8.6 / 10</span>
+                                    <span className="info_element">{vote} / 10</span>
                                 </div>
                             </div>
                         </div>
