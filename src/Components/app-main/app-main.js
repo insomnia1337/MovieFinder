@@ -38,7 +38,8 @@ class AppMain extends React.Component {
             vote: data.vote_average,
             poster: data.poster_path,
             time: data.runtime,
-            cash: data.revenue
+            cash: data.revenue,
+            overview: data.overview
 
         })
     })
