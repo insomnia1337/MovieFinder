@@ -2,18 +2,19 @@ import React from 'react';
 
 class Card extends React.Component {
     
-
-
+   
+    
     render() {
-        const {dataRelease, original_title, vote, time, tagline, overview, cash} = this.props.data;
-        
+        const {dataRelease, original_title, vote, time, tagline, overview, cash, poster} = this.props.data;
+
         return (
             <div className="container">
                 <div className="row">
                     <div className="poster-container col-12 col-md-4 col-lg-4">
                         <img
                             className="poster img-responsive"
-                            src="https://image.tmdb.org/t/p/w500/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg"/>
+                            src={"https://image.tmdb.org/t/p/w500/" + poster}
+                            />
 
                     </div>
                     <div className="data-container col-12 col-md-8 col-lg-8">
