@@ -6,7 +6,7 @@ class AppMain extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            movieID: 157336,
+            movieID: 157,
         }
     }
 
@@ -38,7 +38,8 @@ class AppMain extends React.Component {
             vote: data.vote_average,
             poster: data.poster_path,
             time: data.runtime,
-            cash: data.revenue
+            cash: data.revenue,
+            overview: data.overview
 
         })
     })
