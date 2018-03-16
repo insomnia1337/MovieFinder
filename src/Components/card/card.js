@@ -13,7 +13,7 @@ class Card extends React.Component {
                     <div className="poster-container col-12 col-md-4 col-lg-4">
                         <img
                             className="poster img-responsive"
-                            src={"https://image.tmdb.org/t/p/w500" + poster}
+                            src={"https://image.tmdb.org/t/p/w500/" + poster}
                             />
 
                     </div>
@@ -41,9 +41,7 @@ class Card extends React.Component {
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         )
 
