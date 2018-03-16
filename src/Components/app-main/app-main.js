@@ -3,52 +3,62 @@ import Card from './../card/card';
 import Search from './../search/search';
 
 class AppMain extends React.Component {
-    constructor(props){
-        super(props)
+
+    constructor(props) {
+        super(props);
         this.state = {
-            movieID: 1578,
+            initialMovie: 157336,
+            film: '',
+            movieList: null,
+            foundFilm: null,
+            firstThreeFilm: null
         }
     }
 
-
-    render() {
-        return (
-            <div className="overlay">
-                <Search/>
-                <Card data={this.state}/>
-                <footer>Made with <span className="heart"></span> &copy; 2018</footer>
-            </div>
-
-        )
-    }
     componentDidMount() {
-        let url = `https://api.themoviedb.org/3/movie/${this.state.movieID}?api_key=be379f00ab45c1359be1344dedeeabf8`
+        let url = `https://api.themoviedb.org/3/movie/${this.state.initialMovie}?api_key=be379f00ab45c1359be1344dedeeabf8`;
         this.fetchApi(url);
     }
 
     fetchApi(url) {
         fetch(url)
-        .then(res => res.json())
-        .then((data) => {
-        this.setState({
-            movieID: data.id,
-            original_title: data.original_title,
-            tagline: data.tagline,
-            dataRelease: data.release_date,
-            vote: data.vote_average,
-            poster: data.poster_path,
-            time: data.runtime,
-            cash: data.revenue,
-            overview: data.overview
-
-        })
-    })
-        .catch(error => console.log('parsing failed', error))
+            .then(res => res.json())
+            .then((data) => {
+                this.setState({
+                    film: data
+                });
+            })
+            .catch(error => console.log('parsing failed', error))
     }
 
-    fetchMovieID(movieID) {
-        let url = `https://api.themoviedb.org/3/movie/${movieID}?api_key=be379f00ab45c1359be1344dedeeabf8`
-        this.fetchApi(url)
+    userTypedLetter = (e) => {
+        let url = 'https://api.themoviedb.org/3/search/movie?api_key=be379f00ab45c1359be1344dedeeabf8&include_adult=false&page=1&language=en-US&query=' + e.target.value;
+        fetch(url)
+            .then(res => res.json())
+            .then((data) => {
+                this.setState({
+                    foundFilm: data.results[0],
+                    movieList: data.results[0].original_title
+                });
+            })
+            .catch(error => console.log('parsing failed', error))
+    };
+
+    clickFilm = (e) => {
+        this.setState({
+            film: this.state.foundFilm,
+        })
+    };
+
+    render() {
+        return (
+            <div className="overlay">
+                <Search onChangeCallback={this.userTypedLetter} clickCallback={this.clickFilm}
+                        foundMovieList={this.state.movieList}/>
+                <Card data={this.state.film}/>
+                <footer>Made with <span className="heart"></span> &copy; 2018</footer>
+            </div>
+        )
     }
 }
 
