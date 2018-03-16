@@ -7,7 +7,6 @@ class Search extends React.Component {
 
     constructor(props){
         super(props);
-        console.log(props);
     }
 
     render() {
@@ -23,12 +22,12 @@ class Search extends React.Component {
                     <div className="col-12 col-sm-6 col-lg-7">
                         <form className="searchbar">
                             <input
-                                onChange={this.props.filmSelected.bind(event)}
+                                onChange={this.props.onChangeCallback.bind(event)}
                                 type="text"
                                 className="form-control searchbox__input"
                                 placeholder="Search movie..."/>
                         </form>
-                        <span onClick={this.props.clickCallbackSelectMovie.bind(event)}>{this.props.foundMovieTittle}</span>
+                        <span onClick={this.props.clickCallback.bind(event)}>{this.props.foundMovieList}</span>
                     </div>
                 </div>
             </div>
