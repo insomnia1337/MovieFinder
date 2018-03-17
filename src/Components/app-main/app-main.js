@@ -7,20 +7,18 @@ class AppMain extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            initialMovie: 157336,
+            idMovie: 343668,
             film: '',
-            movieList: null,
-            foundFilm: null,
-            firstThreeFilm: null
+            movieList: '',
         }
     }
 
     componentDidMount() {
-        let url = `https://api.themoviedb.org/3/movie/${this.state.initialMovie}?api_key=be379f00ab45c1359be1344dedeeabf8`;
-        this.fetchApi(url);
+        this.displayFilmDetails(this.state.idMovie);
     }
 
-    fetchApi(url) {
+    displayFilmDetails(idMovie) {
+        let url = `https://api.themoviedb.org/3/movie/${idMovie}?api_key=be379f00ab45c1359be1344dedeeabf8`;
         fetch(url)
             .then(res => res.json())
             .then((data) => {
@@ -32,22 +30,39 @@ class AppMain extends React.Component {
     }
 
     userTypedLetter = (e) => {
+        if (e.target.value === '') {
+            this.setState({
+                film: '',
+                movieList: '',
+            });
+            this.displayFilmDetails(this.state.idMovie);
+            return ;
+        }
         let url = 'https://api.themoviedb.org/3/search/movie?api_key=be379f00ab45c1359be1344dedeeabf8&include_adult=false&page=1&language=en-US&query=' + e.target.value;
         fetch(url)
             .then(res => res.json())
             .then((data) => {
+                let movieListTitle = [];
+                data.results.slice(0,3).map((film) => {
+                    movieListTitle.push(film.original_title);
+                });
                 this.setState({
-                    foundFilm: data.results[0],
-                    movieList: data.results[0].original_title
+                    movieList: movieListTitle,
+                    movieListDescription:  data.results.slice(0,3)
                 });
             })
             .catch(error => console.log('parsing failed', error))
     };
 
-    clickFilm = (e) => {
-        this.setState({
-            film: this.state.foundFilm,
-        })
+    clickFilm = (title) => {
+        this.state.movieListDescription.map((film) => {
+           if (film.original_title === title) {
+               this.setState({
+                   idMovie: film.id
+               });
+               this.displayFilmDetails(film.id);
+           }
+        });
     };
 
     render() {

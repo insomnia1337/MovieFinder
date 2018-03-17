@@ -4,7 +4,6 @@ class Card extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(props)
     }
 
     render() {
@@ -73,7 +72,6 @@ class Card extends React.Component {
             </div>
         )
     }
-
 }
 
 export default Card
