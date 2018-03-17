@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const TMDBLogo = 'https://www.themoviedb.org/assets/static_cache/27b65cb40d26f78354a4ac5abf87b2be/images/v4/logos/powered-by-rectangle-green.svg';
+const TMDBLogo = 'https://nowymarketing.pl/i/articles/12388_l2.jpg';
 
 class Search extends React.Component {
 
@@ -9,7 +9,22 @@ class Search extends React.Component {
         super(props);
     }
 
+    searchToolbar() {
+        let i = 0;
+        let movies = this.props.foundMovieList.map((item) => {
+            i++;
+            return <button id={item} onClick={this.props.clickCallback.bind(null, item)} key={i + item} className="dropdown-item" type="button">{item}</button>;
+        });
+
+        return (
+            <div className="dropdown">
+                {movies}
+            </div>
+        )
+    }
+
     render() {
+
         return (
             <div className="container search-container">
                 <div className="row">
@@ -27,13 +42,11 @@ class Search extends React.Component {
                                 className="form-control searchbox__input"
                                 placeholder="Search movie..."/>
                         </form>
-                        <span onClick={this.props.clickCallback}>{this.props.foundMovieList}</span>
-                        
+                        {this.props.foundMovieList.length > 1 ? this.searchToolbar() : null }
                     </div>
                 </div>
             </div>
         )
-
     }
 }
 
