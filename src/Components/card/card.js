@@ -1,4 +1,5 @@
 import React from 'react';
+import numeral from "numeral"
 
 class Card extends React.Component {
 
@@ -26,7 +27,7 @@ class Card extends React.Component {
         if (revenue == null || revenue === 0) {
             revenue = noInfo
         } else {
-            revenue = '$'+ revenue 
+            revenue = numeral(revenue).format('($0,0)');
         };
 
         let posterPhoto = "https://image.tmdb.org/t/p/w500/" + poster_path 
