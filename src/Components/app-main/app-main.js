@@ -43,12 +43,12 @@ class AppMain extends React.Component {
             .then(res => res.json())
             .then((data) => {
                 let movieListTitle = [];
-                data.results.slice(0,3).map((film) => {
+                data.results.slice(0,5).map((film) => {
                     movieListTitle.push(film.original_title);
                 });
                 this.setState({
                     movieList: movieListTitle,
-                    movieListDescription:  data.results.slice(0,3)
+                    movieListDescription:  data.results.slice(0,5)
                 });
             })
             .catch(error => console.log('parsing failed', error))
@@ -58,7 +58,7 @@ class AppMain extends React.Component {
         this.state.movieListDescription.map((film) => {
            if (film.original_title === title) {
                this.setState({
-                   idMovie: film.id
+                   idMovie: film.id,
                });
                this.displayFilmDetails(film.id);
            }

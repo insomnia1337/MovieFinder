@@ -1,24 +1,40 @@
 import React from 'react';
 
 
-const TMDBLogo = 'https://nowymarketing.pl/i/articles/12388_l2.jpg';
+const TMDBLogo = 'https://www.themoviedb.org/static_cache/v4/logos/408x161-powered-by-rectangle-green-bb4301c10ddc749b4e79463811a68afebeae66ef43d17bcfd8ff0e60ded7ce99.png';
 
 class Search extends React.Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            show: true
+        }
     }
+    toggleDropdown(){
+        this.setState({
+            show: !this.state.show
+        })
+    }
+    hide(e){
+        if(e && e.relatedTarget){
+          e.relatedTarget.click();
+        }
+        this.setState({show: false});
+      }
+
 
     searchToolbar() {
         let i = 0;
         let movies = this.props.foundMovieList.map((item) => {
             i++;
-            return <button id={item} onClick={this.props.clickCallback.bind(null, item)} key={i + item} className="dropdown-item" type="button">{item}</button>;
+            return <button id={item} onBlur={() => this.hide()} onClick={() => this.toggleDropdown()} onClick={this.props.clickCallback.bind(null, item)} key={i + item} className="dropdown-item" type="button">{item}</button>;
         });
 
         return (
+            
             <div className="dropdown">
-                {movies}
+              {movies}
             </div>
         )
     }
@@ -42,7 +58,7 @@ class Search extends React.Component {
                                 className="form-control searchbox__input"
                                 placeholder="Search movie..."/>
                         </form>
-                        {this.props.foundMovieList.length > 1 ? this.searchToolbar() : null }
+                        {this.props.foundMovieList.length > 1 && this.state.show ? this.searchToolbar() : null }
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 
 
 .searchbar {
+    position: relative;
     margin-top: 50px;
     
     .form-control:focus {
@@ -13,14 +14,21 @@
         color: white;
         &::focus {
             outline: none !important;
+            
         }
+        
     }
 }
 
 .dropdown {
+    width: 36%;
+    z-index: 9999;
+    position: fixed;
     opacity: 0.8;
     .dropdown-item {
         background-color: #030404;
         color: white;
+        
     }
+    
 }
