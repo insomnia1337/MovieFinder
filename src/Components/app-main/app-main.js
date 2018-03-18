@@ -10,7 +10,6 @@ class AppMain extends React.Component {
             idMovie: 343668,
             film: '',
             movieList: '',
-            show: true
         }
     }
 
@@ -60,7 +59,6 @@ class AppMain extends React.Component {
            if (film.original_title === title) {
                this.setState({
                    idMovie: film.id,
-                   show: !this.state.show
                });
                this.displayFilmDetails(film.id);
            }
