@@ -7,33 +7,17 @@ class Search extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {
-            show: true
-        }
     }
-    toggleDropdown(){
-        this.setState({
-            show: !this.state.show
-        })
-    }
-    hide(e){
-        if(e && e.relatedTarget){
-          e.relatedTarget.click();
-        }
-        this.setState({show: false});
-      }
-
 
     searchToolbar() {
         let i = 0;
         let movies = this.props.foundMovieList.map((item) => {
             i++;
-            return <button id={item} onBlur={() => this.hide()} onClick={() => this.toggleDropdown()} onClick={this.props.clickCallback.bind(null, item)} key={i + item} className="dropdown-item" type="button">{item}</button>;
+            return <button id={item} onClick={this.props.clickCallback.bind(null, item)} key={i + item} className="dropdown-item" type="button">{item}</button>;
         });
 
         return (
-            
-            <div className="dropdown">
+            <div className="dropdown" onMouseLeave={this.props.onMouseLeaveCallback}>
               {movies}
             </div>
         )
@@ -58,7 +42,7 @@ class Search extends React.Component {
                                 className="form-control searchbox__input"
                                 placeholder="Search movie..."/>
                         </form>
-                        {this.props.foundMovieList.length > 1 && this.state.show ? this.searchToolbar() : null }
+                        {this.props.foundMovieList.length > 1 && true? this.searchToolbar() : null }
                     </div>
                 </div>
             </div>

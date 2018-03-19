@@ -25,6 +25,8 @@ class AppMain extends React.Component {
                 this.setState({
                     film: data
                 });
+                    let backdrop_path = "url(https://image.tmdb.org/t/p/original/" + data.backdrop_path + ")";
+                    document.getElementsByTagName('body')[0].style.backgroundImage = backdrop_path;
             })
             .catch(error => console.log('parsing failed', error))
     }
@@ -59,17 +61,24 @@ class AppMain extends React.Component {
            if (film.original_title === title) {
                this.setState({
                    idMovie: film.id,
+                   movieList: ''
                });
                this.displayFilmDetails(film.id);
            }
         });
     };
 
+    hideToolbar = () => {
+        this.setState({
+            movieList: ''
+        })
+    };
+
     render() {
         return (
             <div className="overlay">
                 <Search onChangeCallback={this.userTypedLetter} clickCallback={this.clickFilm}
-                        foundMovieList={this.state.movieList}/>
+                        foundMovieList={this.state.movieList} onMouseLeaveCallback={this.hideToolbar}/>
                 <Card data={this.state.film}/>
                 <footer>Made with <span className="heart"></span> &copy; 2018</footer>
             </div>
